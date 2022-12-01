@@ -13,12 +13,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public abstract class Day {
+public abstract class Day<T> {
 
     private final int day;
+    
+    protected final List<String> input;
 
     protected Day(int day) {
         this.day = day;
+        this.input = getInput();
     }
 
     private Path getInputPath() throws URISyntaxException, IOException {
@@ -30,7 +33,7 @@ public abstract class Day {
         return Paths.get(uri);
     }
 
-    protected List<String> getInput() {
+    private List<String> getInput() {
         List<String> input = new ArrayList<>();
         try (Stream<String> lines = Files.lines(getInputPath())) {
             input = lines.toList();
@@ -40,13 +43,13 @@ public abstract class Day {
         return input;
     }
 
-    protected abstract String solvePartOne();
+    protected abstract T solvePartOne();
 
-    protected abstract String solvePartTwo();
+    protected abstract T solvePartTwo();
 
     public void resolve() {
-        System.out.print("Day " + day + " :");
-        System.out.print(" part one = " + solvePartOne());
-        System.out.print(" part two = " + solvePartTwo() + "\n");
+        System.out.print("Day " + day + " : ");
+        System.out.print("part one = " + solvePartOne() + " ");
+        System.out.print("part two = " + solvePartTwo() + "\n");
     }
 }

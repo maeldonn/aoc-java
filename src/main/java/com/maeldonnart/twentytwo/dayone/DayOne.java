@@ -1,10 +1,9 @@
 package com.maeldonnart.twentytwo.dayone;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import com.maeldonnart.twentytwo.common.Day;
 
 public class DayOne extends Day<Integer> {
@@ -14,20 +13,16 @@ public class DayOne extends Day<Integer> {
     }
 
     private List<Integer> getElfCalories() {
-        List<Integer> elfCalories = IntStream.of(new int[input.size()])
-             .boxed()
-             .collect(Collectors.toList());
+        String inputAsString = input.stream().collect(Collectors.joining(System.getProperty("line.separator")));
+        return Arrays.asList(inputAsString.split("\n\n")).stream()
+             .map(this::sumMealsCalories)
+             .toList();
+    }
 
-        int currentElf = 1;
-        for (String mealCalorie : input) {
-            if (mealCalorie.isBlank()) {
-                currentElf++;
-            } else {
-                elfCalories.set(currentElf - 1, elfCalories.get(currentElf - 1) + Integer.parseInt(mealCalorie));
-            }
-        }
-
-        return elfCalories;
+    private int sumMealsCalories(String line) {
+        return Arrays.stream(line.split("\n"))
+             .map(Integer::valueOf)
+             .reduce(0, Integer::sum);
     }
 
     @Override

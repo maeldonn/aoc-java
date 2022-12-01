@@ -3,6 +3,7 @@ package com.maeldonnart.twentytwo.common;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.FileSystemNotFoundException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,15 +25,6 @@ public abstract class Day<T> {
         this.input = getInput();
     }
 
-    private Path getInputPath() throws URISyntaxException, IOException {
-        String filename = "input" + day + ".txt";
-        URI uri = getClass().getClassLoader().getResource(filename).toURI();
-        Map<String, String> env = new HashMap<>();
-        env.put("create", "true");
-        FileSystems.newFileSystem(uri, env);
-        return Paths.get(uri);
-    }
-
     private List<String> getInput() {
         List<String> input = new ArrayList<>();
         try (Stream<String> lines = Files.lines(getInputPath())) {
@@ -41,6 +33,23 @@ public abstract class Day<T> {
             e.printStackTrace();
         }
         return input;
+    }
+
+    private Path getInputPath() throws URISyntaxException, IOException {
+        String filename = "input" + day + ".txt";
+        URI uri = getClass().getClassLoader().getResource(filename).toURI();
+        createFileSystemIfNeeded(uri);
+        return Paths.get(uri);
+    }
+
+    private void createFileSystemIfNeeded(URI uri) throws IOException {
+        try {
+            FileSystems.getFileSystem(uri);
+        } catch (FileSystemNotFoundException exception) {
+            Map<String, String> env = new HashMap<>();
+            env.put("create", "true");
+            FileSystems.newFileSystem(uri, env);
+        }
     }
 
     protected abstract T solvePartOne();

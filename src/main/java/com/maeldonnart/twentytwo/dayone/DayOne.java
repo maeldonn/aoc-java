@@ -19,7 +19,7 @@ public class DayOne extends Day<Integer> {
     }
 
     private int sumMealsCalories(String line) {
-        return Arrays.stream(line.split("\n"))
+        return Arrays.stream(line.split(System.lineSeparator()))
              .map(Integer::valueOf)
              .reduce(0, Integer::sum);
     }

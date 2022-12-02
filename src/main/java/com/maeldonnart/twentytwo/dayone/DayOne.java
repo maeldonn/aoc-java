@@ -3,7 +3,6 @@ package com.maeldonnart.twentytwo.dayone;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import com.maeldonnart.twentytwo.common.Day;
 
 public class DayOne extends Day<Integer> {
@@ -13,8 +12,8 @@ public class DayOne extends Day<Integer> {
     }
 
     private List<Integer> getElfCalories() {
-        String inputAsString = input.stream().collect(Collectors.joining(System.getProperty("line.separator")));
-        return Arrays.asList(inputAsString.split("\n\n")).stream()
+        String inputAsString = String.join(System.lineSeparator(), input);
+        return Arrays.asList(inputAsString.split(System.lineSeparator() + System.lineSeparator())).stream()
              .map(this::sumMealsCalories)
              .toList();
     }
@@ -27,9 +26,7 @@ public class DayOne extends Day<Integer> {
 
     @Override
     protected Integer solvePartOne() {
-        return getElfCalories().stream()
-            .max(Integer::compare)
-            .orElse(0);
+        return Collections.max(getElfCalories());
     }
 
     @Override

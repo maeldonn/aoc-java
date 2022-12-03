@@ -12,3 +12,4 @@ Currently there is only 2022.
 | Day                                                                                    | Part One | Part Two |
 |----------------------------------------------------------------------------------------|:--------:|:--------:|
 | ✔ [Day 1: Calorie Counting](src/main/java/com/maeldonnart/twentytwo/dayone)            |    🌟    |    🌟    |
+| ✔ [Day 2: Rock Paper Scissors](src/main/java/com/maeldonnart/twentytwo/daytwo)         |    🌟    |    🌟    |

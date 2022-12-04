@@ -55,15 +55,15 @@ public class DayTwo extends Day<Integer> {
     protected Integer solvePartOne() {
         Map<String, Integer> scoreByChoices = getScoreByChoicesBeforeInstructions();
         return input.stream()
-             .map(scoreByChoices::get)
-             .reduce(0, Integer::sum);
+             .mapToInt(scoreByChoices::get)
+             .sum();
     }
 
     @Override
     protected Integer solvePartTwo() {
         Map<String, Integer> scoreByChoices = getScoreByChoicesAfterInstructions();
         return input.stream()
-             .map(scoreByChoices::get)
-             .reduce(0, Integer::sum);
+             .mapToInt(scoreByChoices::get)
+             .sum();
     }
 }

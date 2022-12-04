@@ -3,6 +3,7 @@ package com.maeldonnart.twentytwo.dayone;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import com.maeldonnart.twentytwo.common.Day;
 
 public class DayOne extends Day<Integer> {
@@ -20,8 +21,8 @@ public class DayOne extends Day<Integer> {
 
     private int sumMealsCalories(String meals) {
         return meals.lines()
-             .map(Integer::valueOf)
-             .reduce(0, Integer::sum);
+             .mapToInt(Integer::valueOf)
+             .sum();
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.maeldonnart.twentytwo.common.Day;
 import com.maeldonnart.twentytwo.dayone.DayOne;
+import com.maeldonnart.twentytwo.daythree.DayThree;
 import com.maeldonnart.twentytwo.daytwo.DayTwo;
 
 public class App {
@@ -20,7 +21,8 @@ public class App {
         getYearLabel();
         List.of(
             new DayOne(),
-            new DayTwo()
+            new DayTwo(),
+            new DayThree()
         ).forEach(Day::resolve);
     }
 }

@@ -18,8 +18,8 @@ public class DayOne extends Day<Integer> {
              .toList();
     }
 
-    private int sumMealsCalories(String line) {
-        return Arrays.stream(line.split(System.lineSeparator()))
+    private int sumMealsCalories(String meals) {
+        return meals.lines()
              .map(Integer::valueOf)
              .reduce(0, Integer::sum);
     }

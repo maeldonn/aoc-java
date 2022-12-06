@@ -16,6 +16,7 @@ Currently there is only 2022.
 | ✔ [Day 3: Rucksack Reorganization](src/main/java/com/maeldonnart/twentytwo/daythree)   |    🌟    |    🌟    |
 | ✔ [Day 4: Camp Cleanup](src/main/java/com/maeldonnart/twentytwo/dayfour)               |    🌟    |    🌟    |
 | ✔ [Day 5: Supply Stacks](src/main/java/com/maeldonnart/twentytwo/dayfive)              |    🌟    |    🌟    |
+| ✔ [Day 6: Tuning Trouble](src/main/java/com/maeldonnart/twentytwo/daysix)              |    🌟    |    🌟    |
 
 ## Run
 

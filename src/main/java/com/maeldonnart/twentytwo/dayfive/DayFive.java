@@ -20,7 +20,7 @@ public class DayFive extends Day<String> {
         public Instruction(String instruction) {
             String[] array = instruction.split(" ");
             move = Integer.valueOf(array[1]);
-            from = Integer.valueOf(array[3])- 1;
+            from = Integer.valueOf(array[3]) - 1;
             to = Integer.valueOf(array[5]) - 1;
         }
 
@@ -31,8 +31,9 @@ public class DayFive extends Day<String> {
         }
 
         public void execute9001(List<LinkedList<Character>> stacks) {
+            int crateToRemove = stacks.get(from).size() - move;
             for (int i = 1; i <= move; i++) {
-                // TODO: Part 2
+                stacks.get(to).addLast(stacks.get(from).remove(crateToRemove));
             }
         }
     }

@@ -2,6 +2,7 @@ package com.maeldonnart.twentytwo.daysix;
 
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.maeldonnart.twentytwo.common.Day;
 
@@ -11,18 +12,12 @@ public class DaySix extends Day<Integer> {
         super(6);
     }
 
-    public Integer findStartOfMessage(int markerLength) {
+    private int findStartOfMessage(int markerLength) {
         String datastream = input.get(0);
-        for (int i = 0; i < datastream.length(); i++) {
-            Set<Character> sequence = datastream.substring(i, i + markerLength).chars()
-                 .mapToObj(e -> (char) e)
-                 .collect(Collectors.toSet());
-            if (sequence.size() == markerLength) {
-                return i + markerLength; 
-            }
-        }
-
-        return null;
+        return IntStream.range(0, datastream.length() - 1)
+             .filter(i -> datastream.substring(i, i + markerLength).chars().distinct().count() == markerLength)
+             .findFirst()
+             .getAsInt() + markerLength;
     }
 
     @Override

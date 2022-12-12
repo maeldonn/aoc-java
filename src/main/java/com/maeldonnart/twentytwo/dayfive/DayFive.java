@@ -39,7 +39,6 @@ public class DayFive extends Day<String> {
     }
 
     private List<LinkedList<Character>> getStacks() {
-        String inputAsString = String.join(System.lineSeparator(), input);
         String[] parts = inputAsString.split(System.lineSeparator() + System.lineSeparator())[0].split(System.lineSeparator());
         List<LinkedList<Character>> stacks = new ArrayList<>();
 
@@ -60,7 +59,6 @@ public class DayFive extends Day<String> {
     }
 
     private List<Instruction> getInstructions() {
-        String inputAsString = String.join(System.lineSeparator(), input);
         return inputAsString.split(System.lineSeparator() + System.lineSeparator())[1].lines()
              .map(Instruction::new)
              .toList();

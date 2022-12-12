@@ -20,9 +20,12 @@ public abstract class Day<T> {
     
     protected final List<String> input;
 
+    protected final String inputAsString;
+
     protected Day(int day) {
         this.day = day;
         this.input = getInput();
+        this.inputAsString = String.join(System.lineSeparator(), input);
     }
 
     private List<String> getInput() {

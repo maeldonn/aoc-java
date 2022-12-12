@@ -13,7 +13,6 @@ public class DayOne extends Day<Integer> {
     }
 
     private List<Integer> getElfCalories() {
-        String inputAsString = String.join(System.lineSeparator(), input);
         return Arrays.asList(inputAsString.split(System.lineSeparator() + System.lineSeparator())).stream()
              .map(this::sumMealsCalories)
              .toList();

@@ -6,6 +6,7 @@ import com.maeldonnart.twentytwo.common.Day;
 import com.maeldonnart.twentytwo.dayfive.DayFive;
 import com.maeldonnart.twentytwo.dayfour.DayFour;
 import com.maeldonnart.twentytwo.dayone.DayOne;
+import com.maeldonnart.twentytwo.dayseven.DaySeven;
 import com.maeldonnart.twentytwo.daysix.DaySix;
 import com.maeldonnart.twentytwo.daythree.DayThree;
 import com.maeldonnart.twentytwo.daytwo.DayTwo;
@@ -28,7 +29,8 @@ public class App {
             new DayThree(),
             new DayFour(),
             new DayFive(),
-            new DaySix()
+            new DaySix(),
+            new DaySeven()
         ).forEach(Day::resolve);
     }
 }

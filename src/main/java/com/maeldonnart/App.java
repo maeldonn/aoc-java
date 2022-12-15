@@ -3,6 +3,7 @@ package com.maeldonnart;
 import java.util.List;
 
 import com.maeldonnart.twentytwo.common.Day;
+import com.maeldonnart.twentytwo.dayeight.DayEight;
 import com.maeldonnart.twentytwo.dayfive.DayFive;
 import com.maeldonnart.twentytwo.dayfour.DayFour;
 import com.maeldonnart.twentytwo.dayone.DayOne;
@@ -30,7 +31,8 @@ public class App {
             new DayFour(),
             new DayFive(),
             new DaySix(),
-            new DaySeven()
+            new DaySeven(),
+            new DayEight()
         ).forEach(Day::resolve);
     }
 }

@@ -18,6 +18,7 @@ Currently there is only 2022.
 | ✔ [Day 5: Supply Stacks](src/main/java/com/maeldonnart/twentytwo/dayfive)              |    🌟    |    🌟    |
 | ✔ [Day 6: Tuning Trouble](src/main/java/com/maeldonnart/twentytwo/daysix)              |    🌟    |    🌟    |
 | ✔ [Day 7: No Space Left On Device](src/main/java/com/maeldonnart/twentytwo/dayseven)   |    🌟    |    🌟    |
+| ✔ [Day 8: Treetop Tree House](src/main/java/com/maeldonnart/twentytwo/dayeight)        |    🌟    |    🚫    |
 
 ## Run
 

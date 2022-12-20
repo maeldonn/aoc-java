@@ -1,9 +1,7 @@
 package com.maeldonnart.twentytwo.dayeight;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -17,37 +15,45 @@ public class DayEight extends Day<Long> {
     }
 
     private static record Tree(int row, int column, int height) {
-
         boolean isVisible(List<String> trees) {
-            return isVisibleInLine(trees.get(row), column) || isVisibleInLine(getColumn(trees, column), row);
+            return isVisibleInLine(trees.get(row), column) || isVisibleInLine(getColumn(trees), row);
         }
 
         long getScenicScore(List<String> trees) {
-            return getScenicScoreInLine(trees.get(row), column) * getScenicScoreInLine(getColumn(trees, column), row);
+            return getScenicScoreInLine(trees.get(row), column) * getScenicScoreInLine(getColumn(trees), row);
         }
-    }
 
-    private static String getColumn(List<String> trees, int column) {
-        return IntStream.range(0, trees.size())
-        .map(i -> trees.get(i).charAt(column))
-        .mapToObj(Character::toString)
-        .collect(Collectors.joining());
-    }
+        String getColumn(List<String> trees) {
+            return IntStream.range(0, trees.size())
+                 .map(i -> trees.get(i).charAt(column))
+                 .mapToObj(Character::toString)
+                 .collect(Collectors.joining());
+        }
 
+        boolean isVisibleInLine(String trees, int treePosition) {
+            boolean visibleFromLeft = isBigger(trees.substring(0, treePosition));
+            boolean visibleFromRight = isBigger(trees.substring(treePosition + 1));
+            return visibleFromLeft || visibleFromRight;
+        }
 
-    private static boolean isVisibleInLine(String trees, int treePosition) {
-        boolean visibleFromLeft = isBigger(trees.substring(0, treePosition), trees.charAt(treePosition));
-        boolean visibleFromRight = isBigger(trees.substring(treePosition + 1), trees.charAt(treePosition));
-        return visibleFromLeft || visibleFromRight;
-    }
+        boolean isBigger(String trees) {
+            return trees.chars().allMatch(tree -> tree < height);
+        }
 
-    private static long getScenicScoreInLine(String trees, int treePosition) {
-        // TODO: Calculate scenic score in line
-        return 0;
-    }
+        long getScenicScoreInLine(String trees, int treePosition) {
+            long leftScenicScore = getViewingDistance(new StringBuilder(trees.substring(0, treePosition)).reverse().toString());
+            long rightScenicScore = getViewingDistance(trees.substring(treePosition + 1));
+            return leftScenicScore * rightScenicScore;
+        }
 
-    private static boolean isBigger(String trees, int treeSize) {
-        return trees.chars().allMatch(tree -> tree < treeSize);
+        long getViewingDistance(String trees) {
+            for (int i = 1; i < trees.length(); i++) {
+                if (trees.charAt(i - 1) >= height) {
+                    return i;
+                }
+            }
+            return trees.isBlank() ? 0 : trees.length();
+        }
     }
 
     private Stream<Tree> parseTree(int row) {
